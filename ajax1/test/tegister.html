@@ -1,0 +1,51 @@
+<form action="reg.php" onsubmit="ckForm()"> 
+	Account:<input type="text" name="account" onblur="ckaccount()" id="account">
+	<span id="mesg"></span><br>
+	Password:<input type="password" name="passwd" id="passwd"><br>
+	Realnme:<input type="text" name="realname"><br>
+	<input type="submit" value="register">
+</form>
+<script>
+	var isok=false;
+	function ckaccount(){
+		console.log("ckaccount");
+		var accountval = $("#account").val();
+		var param={account:accountval};
+		$.get("ckaccount.php",params,function(data){
+			var jsonobj = JSON.parse(data);
+			
+			if(jsonobj.result!=null && jsonobj.result==0){
+				console.log("OK");
+				$("#mesg").html('可以使用');
+				isok=true;
+			}else{
+				console.log("XX");
+				$("#mesg").html('帳號已存在');
+				isok=false;
+			}
+			
+		})
+	}
+	function ckaccountV2(){
+		console.log("ckaccount2");
+		var accountval = $("#account").val();
+		var param={
+				account:accountval};
+		$.ajax({
+			async:false,
+			data:params,
+			url:"ckaccount.php",
+			success:function(data,status,xhr){
+				
+			}
+			data:
+		})
+	}
+	
+	function ckForm(){
+		console.log("before:ckaccount");
+		ckaccount();
+		console.log("after:ckaccount");
+		return isok;
+	}
+</script>

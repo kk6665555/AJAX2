@@ -1,0 +1,31 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<button onclick="test2()">test2</button>
+<div id="here"></div>
+<script>
+	function test2(){
+		$.post("ajax02.php",{
+			account:"名子",
+			passwd:123,
+			
+		},function(data,status){
+			console.log(data+":"+status)
+		})
+		
+	}
+	function test21(){
+		$.ajax({
+			url:"ajax02.php",
+			type:"POST",
+			data:{
+				account:"名子",
+				passwd:1234
+			},
+			complete:function(xhr,status){
+				console.log(status+xhr.responseText);
+			}
+		});
+	}
+</script>

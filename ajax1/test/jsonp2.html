@@ -1,0 +1,29 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+
+	function test1(){
+		$.ajax({
+			type:"git",
+			async:"false",
+			url:"http://10.21.200.71:80/test/jsonp2.php",
+			<!--url:"jsonp2.php"-->
+			jsonp:"MycallBack",
+			dataType:"jsonp",
+			jsonpCallback:"myfunc",
+			success:function(data){
+				console.log(data);
+				$("#here").html(data.name);
+			},
+			error:function(){
+				alert("ERROR");
+			}
+		});
+	}
+
+	function myfunc(){
+		console.log('got it');
+	}
+</script>
+<button onclick="test1()">test1</button>
+<div id = 'here'></div>

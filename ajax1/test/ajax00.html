@@ -1,0 +1,22 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script>
+	//Javascript Object
+	var Member={
+		"id":"123",
+		"account":"mike",
+		"realname":"名子",
+		"age":20,
+		"gender":false,
+		"language":[
+			"Java","Javascript","ios","PHP"
+		]
+	};
+	
+	console.log(Member.account);
+	
+	var memberstr=JSON.stringify(Member);
+	console.log(memberstr);
+	
+	var memberObj=JSON.parse(memberstr);
+	console.log(Member.realname);
+</script>

@@ -1,0 +1,24 @@
+
+<input type="file" name="uploadfile" id="uploadfile">
+<button onclick="Upload()">Upload</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/apis/jQuery.AjaxFileUpload.js"></script>
+
+<script>
+		$("#uploadfile").ajaxfileupload({
+	  		action: "ajax03.php",
+		  		valid_extensions : ['png','jpg'],
+	  		  onComplete: function(response) {
+	  		    console.log('custom handler for file:');
+	  		    //alert(JSON.stringify(response));
+	  		  },
+	  		  
+	  		  onStart: function() {
+	  		    console.log("star");
+	  		  },
+	  		  onCancel: function() {
+	  		    console.log('no file selected');
+	  		  }
+	})
+</script>
